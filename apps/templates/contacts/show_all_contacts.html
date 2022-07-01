@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block body %}
+    <a href="{% url 'contacts:create_contact' %}">
+        <button class="btn btn-primary">Add new contact</button>
+    </a>
+
+    <ol>
+        {% for contact in contacts %}
+            <li style="margin: .2em">
+                <span>{{ contact.contact_name }} - {{ contact.phone_number }}</span>
+                <a href="{% url 'contacts:edit' pk=contact.pk %}">
+                    <button class="btn btn-primary">Edit contact</button>
+                </a>
+                <a href="{% url 'contacts:delete' pk=contact.pk %}">
+                    <button class="btn btn-danger">Delete</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

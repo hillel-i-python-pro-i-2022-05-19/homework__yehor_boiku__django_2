@@ -1,0 +1,11 @@
+version: '3.8'
+
+
+services:
+  app:
+    build: .
+    volumes:
+      - "./db:/wd/db:rw"
+    ports:
+      - "8050:8050"
+    command: '/start.sh'
