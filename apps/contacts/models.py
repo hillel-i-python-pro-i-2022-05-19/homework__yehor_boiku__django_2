@@ -19,15 +19,6 @@ class Contact(models.Model):
 
     birthday = models.CharField('Day of birth', max_length=20, default='01/01/99')
 
-    # detail_contacts_one_to_many = models.ManyToOneRel(
-    #     DetailForContact,
-    #     field='',
-    #     to='',
-    #     field_name='contact_detail',
-    #     on_delete='',
-    # )
-    # detail = models.ForeignKey(DetailForContact, on_delete=models.CASCADE, default=None)
-
     tags = models.CharField(
         'Tags', max_length=100,
         help_text='Tags dor you Contact',
@@ -57,22 +48,28 @@ class Tags(models.Model):
 
 
 class DetailForContact(models.Model):
-    linkedin_profile = models.CharField(
-        'LinkedIn', max_length=100,
-        help_text='Here is LinkedIn page',
-        blank='True'
+    ADDITIONAL_PHONE_NUMBER = 'APN'
+    LINKEDIN = 'LinIn'
+    TELEGRAM = 'TG'
+    EMAIL = 'EMAIL'
+    DETAIL_IN_CONTACT_CHOICES = [
+        (ADDITIONAL_PHONE_NUMBER, 'Additional phone number'),
+        (LINKEDIN, 'Linkedin'),
+        (TELEGRAM, 'Telegram'),
+        (EMAIL, 'Email'),
+    ]
+    contact_type = models.CharField(
+        'Details',
+        max_length=100,
+        help_text='Add details about you Contact',
+        choices=DETAIL_IN_CONTACT_CHOICES,
+        default=LINKEDIN,
+        blank=True,
     )
-    telegram_id = models.CharField(
-        'Telegram', max_length=100,
-        help_text='Here is Telegram contact',
-        blank='True'
-    )
-    email = models.EmailField(
-        'Email', max_length=100,
-        help_text='It is email address',
-        default='example@domen.com',
-        blank=True
-    )
+    detail_for_contact_type = models.CharField(
+        'Detail for contact type',
+        max_length=20,
+        default='@example')
 
     detail = models.ForeignKey(
         to=Contact,
@@ -81,9 +78,35 @@ class DetailForContact(models.Model):
         blank=False,
     )
 
-    def __str__(self) -> str:
-        return f'{self.linkedin_profile} ' \
-               f'- {self.telegram_id} ' \
-               f'- {self.email}'
-
-    __repr__ = __str__
+######################################################
+# class DetailForContact(models.Model):
+#     linkedin_profile = models.CharField(
+#         'LinkedIn', max_length=100,
+#         help_text='Here is LinkedIn page',
+#         blank='True'
+#     )
+#     telegram_id = models.CharField(
+#         'Telegram', max_length=100,
+#         help_text='Here is Telegram contact',
+#         blank='True'
+#     )
+#     email = models.EmailField(
+#         'Email', max_length=100,
+#         help_text='It is email address',
+#         default='example@domen.com',
+#         blank=True
+#     )
+#
+#     detail = models.ForeignKey(
+#         to=Contact,
+#         on_delete=models.CASCADE,
+#         null=False,
+#         blank=False,
+#     )
+#
+#     def __str__(self) -> str:
+#         return f'{self.linkedin_profile} ' \
+#                f'- {self.telegram_id} ' \
+#                f'- {self.email}'
+#
+#     __repr__ = __str__
