@@ -70,10 +70,10 @@ class Tags(models.Model):
 
 
 class DetailForContact(models.Model):
-    PHONE_NUMBER = 'APN'
-    LINKEDIN = 'LinIn'
-    TELEGRAM = 'TG'
-    EMAIL = 'EMAIL'
+    PHONE_NUMBER = 'Phone number'
+    LINKEDIN = 'Linkedin'
+    TELEGRAM = 'Telegram'
+    EMAIL = 'Email'
     DETAIL_IN_CONTACT_CHOICES = [
         (PHONE_NUMBER, 'Phone number'),
         (LINKEDIN, 'Linkedin'),
