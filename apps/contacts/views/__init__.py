@@ -1,0 +1,4 @@
+from .contacts_list_view import ContactsListView
+from .contact_delete_view import ContactDeleteView
+from .create_contact_view import ContactCreateView
+from .contact_update_view import ContactUpdateView
