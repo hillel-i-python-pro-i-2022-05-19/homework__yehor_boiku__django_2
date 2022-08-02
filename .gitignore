@@ -162,5 +162,4 @@ cython_debug/
 .idea
 db/**
 !db/.gitkeep
-docker-compose.yml
-docker-compose.override.dev.yml
+docker-compose.override.yml
