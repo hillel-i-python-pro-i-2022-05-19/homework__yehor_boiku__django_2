@@ -15,6 +15,11 @@ d-homework-i-purge:
 d-run:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build
 
+.PHONY: d-run-i-db
+# Just run
+d-run-i-db:
+	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build postgres
+
 .PHONY: d-run-i-extended
 # Shutdown previous, run in detached mode, follow logs
 d-run-i-extended:

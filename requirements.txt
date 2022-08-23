@@ -1,3 +1,8 @@
+# Core
 django==4.0.5
 
+# Get enviroment variables
 django-environ==0.9.0
+
+# DB Postgres
+psycopg2-binary==2.9.3
