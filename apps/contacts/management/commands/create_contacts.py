@@ -17,17 +17,17 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         amount_contact_name = options['amount']
 
-        logger = logging.getLogger('create_contacts')
-        logger.setLevel(logging.INFO)
+        # logger = logging.getLogger('create_contacts')
+        # logger.setLevel(logging.INFO)
 
-        logging.info(f'Amount of contacts before: {Contact.objects.count()}')
+        # logging.info(f'Amount of contacts before: {Contact.objects.count()}')
 
         for _ in range(amount_contact_name):
             contact = Contact(
                 contact_name=fake.first_name(),
-                phone_number=int(f'380{random.randint(100000000, 999999999)}')
+                phone_number=f'+380{random.randint(100000000, 999999999)}',
             )
 
             contact.save()
 
-    logging.info(f'Amount of contacts after: {Contact.objects.count()}')
+    # logging.info(f'Amount of contacts after: {Contact.objects.count()}')

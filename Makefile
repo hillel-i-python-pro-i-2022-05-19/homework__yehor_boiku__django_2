@@ -13,7 +13,7 @@ d-homework-i-purge:
 .PHONY: d-run
 # Just run
 d-run:
-	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up --build
+	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 COMPOSE_PROFILES=full_dev docker-compose up --build
 
 .PHONY: d-run-i-db
 # Just run

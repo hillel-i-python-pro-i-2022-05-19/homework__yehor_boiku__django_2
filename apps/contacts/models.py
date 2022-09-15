@@ -25,9 +25,11 @@ class Contact(models.Model):
                                     help_text='It is name of human',
                                     max_length=20,
                                     default='Vasya')
-    phone_number = models.PositiveIntegerField('Phone Number',
-                                               help_text='Phone number must start "380"',
-                                               default=380)
+    phone_number = models.CharField('Phone Number',
+                                    help_text='Phone number must start "380"',
+                                    default='+380',
+                                    max_length=20
+                                    )
 
     birthday = models.CharField('Day of birth', max_length=20, default='01/01/99')
 
